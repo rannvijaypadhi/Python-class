@@ -1,4 +1,3 @@
-// DOM ELEMENTS
 const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
 
@@ -24,7 +23,6 @@ let timeLimit = 1500;
 let shotTimer = null;
 let shotActive = false;
 
-// START GAME
 startBtn.onclick = () => {
   titleScreen.style.display = "none";
   endScreen.style.display = "none";
@@ -38,13 +36,11 @@ startBtn.onclick = () => {
   nextShot();
 };
 
-// RESTART
 restartBtn.onclick = () => {
   endScreen.style.display = "none";
   titleScreen.style.display = "flex";
 };
 
-// MOVE GLOVE WITH MOUSE
 document.addEventListener("mousemove", e => {
   const fieldRect = document.getElementById("field").getBoundingClientRect();
   const x = e.clientX - fieldRect.left;
@@ -54,14 +50,12 @@ document.addEventListener("mousemove", e => {
   glove.style.top = `${y - glove.offsetHeight / 2}px`;
 });
 
-// UPDATE HUD
 function updateHUD() {
   scoreDisplay.textContent = `Score: ${score}`;
   const totalMisses = misses.left + misses.center + misses.right;
   missDisplay.textContent = `Misses: ${totalMisses}`;
 }
 
-// REQUEST NEXT SHOT FROM AI
 function nextShot() {
   shotActive = false;
   ball.style.transition = "none";
@@ -81,7 +75,6 @@ function nextShot() {
     .catch(() => gameOver());
 }
 
-// START SHOT ANIMATION
 function startShot() {
   shotActive = true;
 
@@ -104,13 +97,11 @@ function startShot() {
   }, timeLimit);
 }
 
-// RESET BALL
 function resetBallPosition() {
   ball.style.left = "50%";
   ball.style.top = "10%";
 }
 
-// COLLISION CHECK
 function checkSave() {
   const ballRect = ball.getBoundingClientRect();
   const gloveRect = glove.getBoundingClientRect();
@@ -125,7 +116,6 @@ function checkSave() {
   return overlap;
 }
 
-// RESOLVE SHOT
 function resolveShot(saved) {
   shotActive = false;
   clearTimeout(shotTimer);
@@ -144,7 +134,6 @@ function resolveShot(saved) {
   nextShot();
 }
 
-// GAME OVER
 function gameOver() {
   gameScreen.style.display = "none";
   endScreen.style.display = "flex";

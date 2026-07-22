@@ -1,6 +1,3 @@
-/* =========================================================
-   GLOBAL RESET & BASE
-   ========================================================= */
 *,
 *::before,
 *::after {
@@ -37,9 +34,6 @@ body {
   background: #2f54b8;
 }
 
-/* =========================================================
-   ROOT VARIABLES
-   ========================================================= */
 :root {
   --primary-blue: #1e3d8f;
   --deep-blue: #0b2a6b;
@@ -57,9 +51,6 @@ body {
   --transition-slow: 0.6s ease;
 }
 
-/* =========================================================
-   LAYOUT HELPERS
-   ========================================================= */
 .fullscreen-center {
   height: 100vh;
   width: 100%;
@@ -73,9 +64,6 @@ body {
   display: none !important;
 }
 
-/* =========================================================
-   TITLE SCREEN
-   ========================================================= */
 #titleScreen {
   height: 100vh;
   display: flex;
@@ -88,7 +76,6 @@ body {
   overflow: hidden;
 }
 
-/* Title glow ring */
 #titleScreen::before {
   content: "";
   position: absolute;
@@ -102,7 +89,6 @@ body {
   filter: blur(1px);
 }
 
-/* Title text */
 #titleScreen h1 {
   font-size: 4.5rem;
   letter-spacing: 4px;
@@ -113,14 +99,12 @@ body {
   animation: titlePulse 2.5s infinite alternate;
 }
 
-/* Subtitle / tagline (optional) */
 #titleSubtitle {
   font-size: 1.2rem;
   color: var(--text-muted);
   margin-bottom: 20px;
 }
 
-/* Title image */
 #titleImage {
   width: 60%;
   max-width: 650px;
@@ -131,7 +115,6 @@ body {
   animation: floatSlow 6s infinite ease-in-out;
 }
 
-/* Start button */
 #startBtn {
   background: linear-gradient(135deg, #ffffff, #f7c948);
   color: #0b2a6b;
@@ -156,9 +139,6 @@ body {
   box-shadow: 0 0 10px rgba(247, 201, 72, 0.7);
 }
 
-/* =========================================================
-   GAME SCREEN
-   ========================================================= */
 #gameScreen {
   height: 100vh;
   display: flex;
@@ -169,7 +149,6 @@ body {
   position: relative;
 }
 
-/* HUD bar */
 #hud {
   width: 100%;
   max-width: 1100px;
@@ -200,14 +179,11 @@ body {
   font-weight: 500;
 }
 
-/* Optional mode indicator */
 #modeDisplay {
   font-size: 1rem;
   color: var(--accent-gold);
 }
 
-/* Field container */
-/* Field container */
 #field {
   width: 100%;
   max-width: 450px;          /* 9:16 style, tall and narrow */
@@ -218,7 +194,6 @@ body {
   align-items: center;
 }
 
-/* Pitch */
 #pitch {
   position: relative;
   width: 100%;
@@ -230,7 +205,6 @@ body {
   overflow: hidden;
 }
 
-/* Center line */
 .center-line {
   position: absolute;
   left: 50%;
@@ -241,7 +215,6 @@ body {
   transform: translateX(-50%);
 }
 
-/* Center circle */
 .center-circle {
   position: absolute;
   left: 50%;
@@ -253,7 +226,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Boxes (penalty areas) */
 .box {
   position: absolute;
   left: 10%;
@@ -270,7 +242,6 @@ body {
   bottom: 12%;
 }
 
-/* FULL-WIDTH GOAL AT BOTTOM */
 #goal-line {
   position: absolute;
   left: 0;
@@ -281,7 +252,6 @@ body {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
 }
 
-/* Ball & glove positioning (top view) */
 #ball {
   position: absolute;
   width: 40px;
@@ -301,7 +271,6 @@ body {
   pointer-events: none;
 }
 
-/* Instruction text */
 #instruction {
   margin-top: 18px;
   font-size: 1.2rem;
@@ -309,9 +278,6 @@ body {
   text-shadow: 1px 1px 0 #0a1f4f;
 }
 
-/* =========================================================
-   END SCREEN
-   ========================================================= */
 #endScreen {
   height: 100vh;
   display: flex;
@@ -323,7 +289,6 @@ body {
   position: relative;
 }
 
-/* End screen glow */
 #endScreen::before {
   content: "";
   position: absolute;
@@ -336,7 +301,6 @@ body {
   left: calc(50% - 250px);
 }
 
-/* End title */
 #endScreen h2 {
   font-size: 3.2rem;
   color: var(--text-light);
@@ -344,14 +308,12 @@ body {
   margin-bottom: 20px;
 }
 
-/* Final score text */
 #finalScore {
   font-size: 1.8rem;
   color: var(--accent-gold);
   margin-bottom: 25px;
 }
 
-/* Restart button */
 #restartBtn {
   background: linear-gradient(135deg, #ffffff, #1e3d8f);
   color: #0b2a6b;
@@ -376,14 +338,10 @@ body {
   box-shadow: 0 0 10px rgba(30, 61, 143, 0.8);
 }
 
-/* =========================================================
-   BUTTON STYLES (GLOBAL)
-   ========================================================= */
 button {
   font-family: inherit;
 }
 
-/* Secondary buttons (if you add more later) */
 .btn-secondary {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-light);
