@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #0b3d91;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#start-screen,
+#mode-screen,
+#game-screen {
+    margin-top: 80px;
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    border: none;
+    background: white;
+    color: #0b3d91;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #e0e0e0;
+}
+
+#field {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.zone {
+    width: 120px;
+    height: 160px;
+    margin: 10px;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.zone.active {
+    background: #f1c40f;
+    color: black;
+}

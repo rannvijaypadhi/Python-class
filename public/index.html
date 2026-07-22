@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Goalie Reaction Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="game.js"></script>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>Goalie Reaction Simulator</h1>
+        <button id="start-btn">Start</button>
+    </div>
+
+    <div id="mode-screen" style="display:none;">
+        <h2>Select Mode</h2>
+        <button id="bot-mode">Play Against Bot</button>
+        <button id="matchmaking-mode">Matchmaking</button>
+    </div>
+
+    <div id="game-screen" style="display:none;">
+        <h2>Game</h2>
+        <div id="field">
+            <div class="zone" id="left">LEFT</div>
+            <div class="zone" id="center">CENTER</div>
+            <div class="zone" id="right">RIGHT</div>
+        </div>
+        <p id="status">Press SPACE to start</p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+</body>
+</html>
