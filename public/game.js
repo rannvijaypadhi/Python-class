@@ -136,7 +136,7 @@ goalImage.addEventListener("click", e => {
       glove.style.transition = "left 0.4s ease, top 0.4s ease"
       glove.style.left = d.ai_x + "%"
       glove.style.top = d.ai_y + "%"
-      shootResult.textContent = "AI guessed: " + d.ai_guess.toUpperCase()
+      shootResult.textContent = "AI guessed: " + d.ai_guess_x + " / " + d.ai_guess_y
     })
 })
 
