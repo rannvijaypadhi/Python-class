@@ -22,10 +22,22 @@
     </div>
 
     <!-- Stadium background, ball, glove -->
-    <div id="field">
-      <img id="ball" src="assets/images/ball.png" alt="Ball">
-      <img id="glove" src="assets/images/gkgloves.png" alt="Goalkeeper Glove">
-    </div>
+<div id="field">
+  <div id="pitch">
+    <div class="center-line"></div>
+    <div class="center-circle"></div>
+
+    <div class="box top-box"></div>
+    <div class="box bottom-box"></div>
+
+    <!-- Full-width goal at bottom -->
+    <div id="goal-line"></div>
+
+    <!-- Ball & glove stay inside pitch -->
+    <img id="ball" src="assets/images/ball.png" alt="Ball">
+    <img id="glove" src="assets/images/gkgloves.png" alt="Goalkeeper Glove">
+  </div>
+</div>
 
     <p id="instruction">Move your glove with the mouse and save the shot!</p>
   </div>
