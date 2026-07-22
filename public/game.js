@@ -139,6 +139,12 @@ goalImage.addEventListener("click", e => {
       shootResult.textContent = "AI guessed: " + d.ai_guess_x + " / " + d.ai_guess_y
     })
 })
+document.addEventListener("mousemove", e => {
+  if (gameScreen.style.display !== "flex") return
+  const r = document.getElementById("pitch").getBoundingClientRect()
+  const x = ((e.clientX - r.left) / r.width) * 100
+  glove.style.left = x + "%"
+})
 
 backToGame.onclick = () => {
   shootSection.style.display = "none"
