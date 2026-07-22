@@ -8,42 +8,94 @@
 <body>
 
   <div id="titleScreen">
-    <h1>GOAL SAVIOR</h1>
-    <img id="titleImage" src="assets/images/goalsavior.png" alt="Goal Savior Title">
-    <button id="startBtn">Start Match</button>
+    <div id="titleSpotlight"></div>
+    <div id="titleParticles">
+      <div class="particle" style="left:10%;bottom:-10%;animation-delay:0s;"></div>
+      <div class="particle" style="left:30%;bottom:-20%;animation-delay:1s;"></div>
+      <div class="particle" style="left:50%;bottom:-15%;animation-delay:2s;"></div>
+      <div class="particle" style="left:70%;bottom:-25%;animation-delay:0.5s;"></div>
+      <div class="particle" style="left:85%;bottom:-18%;animation-delay:1.5s;"></div>
+    </div>
+
+    <div id="titleTopBar">
+      <div id="titleLogo">GOAL SAVIOR</div>
+      <div id="titleTagline">AI vs You • Reflex • Precision</div>
+    </div>
+
+    <div id="titleMain">
+      <h1><span>Goal</span> Savior</h1>
+      <p>Defend the net, outsmart the AI, and master the art of the save.</p>
+
+      <div id="titleChips">
+        <div class="title-chip">AI Striker</div>
+        <div class="title-chip">AI Goalkeeper</div>
+        <div class="title-chip">Penalty Mode</div>
+      </div>
+
+      <div id="titleButtons">
+        <button id="startBtn" class="btn-primary">Start Match</button>
+        <button id="openShootout" class="btn-secondary">Penalty Shootout</button>
+      </div>
+    </div>
+
+    <div id="titleBottomBar">
+      <span>Built by Rannvijay • Python + Node + JS</span>
+      <span>Version 1.0 • Experimental AI</span>
+    </div>
   </div>
+
   <div id="gameScreen" style="display:none;">
     <div id="hud">
       <span id="scoreDisplay">Score: 0</span>
       <span id="missDisplay">Misses: 0</span>
     </div>
-<div id="field">
-  <div id="pitch">
-    <div class="center-line"></div>
-    <div class="center-circle"></div>
 
-    <div class="box top-box"></div>
-    <div class="box bottom-box"></div>
+    <div id="field">
+      <div id="pitch">
+        <div class="center-line"></div>
+        <div class="center-circle"></div>
+        <div class="box top-box"></div>
+        <div class="box bottom-box"></div>
+        <div id="goal-line"></div>
+        <img id="ball" src="assets/images/ball.png" alt="Ball">
+        <img id="glove" src="assets/images/gkgloves.png" alt="Goalkeeper Glove">
+      </div>
+    </div>
 
-    <div id="goal-line"></div>
-
-    <img id="ball" src="assets/images/ball.png" alt="Ball">
-    <img id="glove" src="assets/images/gkgloves.png" alt="Goalkeeper Glove">
+    <p id="instruction">Save every shot. The AI striker is watching your every move.</p>
   </div>
-</div>
 
-    <p id="instruction">Move your glove with the mouse and save the shot!</p>
+  <div id="shootSection" style="display:none;">
+    <h2>Penalty Shootout</h2>
+    <p>Click anywhere on the goal to shoot. The AI goalkeeper will try to read you.</p>
+
+    <div id="goalArea">
+      <img id="goalImage" src="assets/images/gamebg.png" alt="Goal">
+    </div>
+
+    <div id="shootResult"></div>
+    <button id="backToGame" class="btn-secondary">Back to Match</button>
   </div>
 
   <div id="endScreen" style="display:none;">
     <h2>Full Time!</h2>
     <p id="finalScore"></p>
-    <button id="restartBtn">Play Again</button>
+    <button id="restartBtn" class="btn-primary">Back to Home</button>
   </div>
+
   <audio id="bgMusic" src="assets/music/bgmusic.mp3" loop></audio>
   <audio id="saveSfx" src="assets/sfx/whatasave.mp3"></audio>
   <audio id="goalSfx" src="assets/sfx/goalcelebration.mp3"></audio>
 
   <script src="game.js"></script>
+  <script>
+    const openShootout = document.getElementById("openShootout")
+    openShootout.onclick = () => {
+      document.getElementById("titleScreen").style.display = "none"
+      document.getElementById("gameScreen").style.display = "none"
+      document.getElementById("endScreen").style.display = "none"
+      document.getElementById("shootSection").style.display = "flex"
+    }
+  </script>
 </body>
 </html>
