@@ -1,84 +1,246 @@
-/* GLOBAL */
-body {
+/* =========================================================
+   GLOBAL RESET & BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  font-family: 'Impact', 'Oswald', sans-serif;
-  background: linear-gradient(135deg, #0b2a6b, #1e3d8f);
-  color: #fff;
-  text-align: center;
+  box-sizing: border-box;
 }
 
-/* TITLE SCREEN */
-#titleScreen {
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Impact', 'Oswald', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #1e3d8f 0%, #0b2a6b 40%, #050b1f 100%);
+  color: #ffffff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050b1f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3d8f;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2f54b8;
+}
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+:root {
+  --primary-blue: #1e3d8f;
+  --deep-blue: #0b2a6b;
+  --accent-gold: #f7c948;
+  --accent-red: #ff3b3b;
+  --accent-green: #3bff7b;
+  --text-light: #ffffff;
+  --text-muted: #c7d2ff;
+  --panel-bg: rgba(5, 11, 31, 0.85);
+  --panel-border: rgba(255, 255, 255, 0.15);
+  --shadow-strong: 0 0 25px rgba(0, 0, 0, 0.8);
+  --shadow-soft: 0 0 15px rgba(0, 0, 0, 0.5);
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.35s ease;
+  --transition-slow: 0.6s ease;
+}
+
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+.fullscreen-center {
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
+/* =========================================================
+   TITLE SCREEN
+   ========================================================= */
+#titleScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: radial-gradient(circle at center, #1e3d8f 0%, #0b2a6b 40%, #050b1f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title glow ring */
+#titleScreen::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 2px solid rgba(247, 201, 72, 0.4);
+  box-shadow: 0 0 60px rgba(247, 201, 72, 0.5);
+  top: -150px;
+  left: calc(50% - 300px);
+  filter: blur(1px);
+}
+
+/* Title text */
 #titleScreen h1 {
-  font-size: 4rem;
-  letter-spacing: 3px;
+  font-size: 4.5rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  text-shadow: 3px 3px 0 #0a1f4f;
+  color: var(--text-light);
+  text-shadow: 4px 4px 0 #0a1f4f, 0 0 25px rgba(0, 0, 0, 0.9);
+  margin-bottom: 20px;
+  animation: titlePulse 2.5s infinite alternate;
+}
+
+/* Subtitle / tagline (optional) */
+#titleSubtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }
 
+/* Title image */
 #titleImage {
   width: 60%;
-  max-width: 600px;
+  max-width: 650px;
   margin-bottom: 30px;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-strong);
+  animation: floatSlow 6s infinite ease-in-out;
 }
 
-#startBtn, #restartBtn {
-  background-color: #ffffff;
+/* Start button */
+#startBtn {
+  background: linear-gradient(135deg, #ffffff, #f7c948);
   color: #0b2a6b;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: bold;
   border: none;
-  padding: 12px 35px;
-  border-radius: 8px;
+  padding: 14px 45px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(247, 201, 72, 0.7);
+  transition: transform var(--transition-med), box-shadow var(--transition-med), background var(--transition-med), color var(--transition-med);
 }
 
-#startBtn:hover, #restartBtn:hover {
-  background-color: #1e3d8f;
-  color: #fff;
-  transform: scale(1.05);
+#startBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 30px rgba(247, 201, 72, 1);
+  background: linear-gradient(135deg, #f7c948, #ffffff);
 }
 
-/* GAME SCREEN */
+#startBtn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 10px rgba(247, 201, 72, 0.7);
+}
+
+/* =========================================================
+   GAME SCREEN
+   ========================================================= */
 #gameScreen {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding: 20px;
+  position: relative;
 }
 
+/* HUD bar */
 #hud {
   width: 100%;
+  max-width: 1100px;
   display: flex;
   justify-content: space-between;
-  padding: 15px 40px;
-  box-sizing: border-box;
-  font-size: 1.2rem;
+  align-items: center;
+  padding: 12px 24px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, rgba(5, 11, 31, 0.9), rgba(11, 42, 107, 0.9));
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow-soft);
 }
 
+/* HUD items */
+#scoreDisplay,
+#missDisplay {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-shadow: 1px 1px 0 #0a1f4f;
+}
+
+#scoreDisplay {
+  font-weight: 700;
+}
+
+#missDisplay {
+  font-weight: 500;
+}
+
+/* Optional mode indicator */
+#modeDisplay {
+  font-size: 1rem;
+  color: var(--accent-gold);
+}
+
+/* Field container */
 #field {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  height: 500px;
+  max-width: 1100px;
+  height: 520px;
   margin: 0 auto;
   background: url("assets/images/gamebg.png") center/cover no-repeat;
-  border: 4px solid #fff;
-  border-radius: 12px;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-strong);
   overflow: hidden;
 }
 
+/* Field overlay for subtle darkening */
+#field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0, 0, 0, 0.2), transparent 50%);
+  pointer-events: none;
+}
+
+/* Goal line indicator */
+.goal-line {
+  position: absolute;
+  bottom: 60px;
+  left: 5%;
+  width: 90%;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(247, 201, 72, 0.9), rgba(255, 255, 255, 0.7));
+  box-shadow: 0 0 15px rgba(247, 201, 72, 0.8);
+}
+
+/* Ball */
 #ball {
   position: absolute;
   width: 60px;
@@ -86,38 +248,341 @@ body {
   left: 50%;
   top: 10%;
   transform: translateX(-50%);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
 }
 
+/* Glove */
 #glove {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   left: 50%;
   top: 80%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.9));
 }
 
+/* Instruction text */
 #instruction {
-  margin-top: 20px;
+  margin-top: 18px;
   font-size: 1.2rem;
+  color: var(--text-muted);
+  text-shadow: 1px 1px 0 #0a1f4f;
 }
 
-/* END SCREEN */
+/* =========================================================
+   END SCREEN
+   ========================================================= */
 #endScreen {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 40px 20px;
+  background: radial-gradient(circle at center, #0b2a6b 0%, #050b1f 60%);
+  position: relative;
 }
 
+/* End screen glow */
+#endScreen::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 59, 59, 0.5);
+  box-shadow: 0 0 50px rgba(255, 59, 59, 0.8);
+  top: -120px;
+  left: calc(50% - 250px);
+}
+
+/* End title */
 #endScreen h2 {
-  font-size: 3rem;
-  text-shadow: 3px 3px 0 #0a1f4f;
+  font-size: 3.2rem;
+  color: var(--text-light);
+  text-shadow: 4px 4px 0 #0a1f4f, 0 0 25px rgba(0, 0, 0, 0.9);
+  margin-bottom: 20px;
 }
 
+/* Final score text */
 #finalScore {
-  font-size: 1.6rem;
-  margin: 20px 0;
+  font-size: 1.8rem;
+  color: var(--accent-gold);
+  margin-bottom: 25px;
+}
+
+/* Restart button */
+#restartBtn {
+  background: linear-gradient(135deg, #ffffff, #1e3d8f);
+  color: #0b2a6b;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(30, 61, 143, 0.8);
+  transition: transform var(--transition-med), box-shadow var(--transition-med), background var(--transition-med), color var(--transition-med);
+}
+
+#restartBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 30px rgba(30, 61, 143, 1);
+  background: linear-gradient(135deg, #1e3d8f, #ffffff);
+}
+
+#restartBtn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 10px rgba(30, 61, 143, 0.8);
+}
+
+/* =========================================================
+   BUTTON STYLES (GLOBAL)
+   ========================================================= */
+button {
+  font-family: inherit;
+}
+
+/* Secondary buttons (if you add more later) */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   STATUS BADGES / TAGS
+   ========================================================= */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-easy {
+  background: rgba(59, 255, 123, 0.2);
+  color: var(--accent-green);
+  border: 1px solid rgba(59, 255, 123, 0.6);
+}
+
+.badge-hard {
+  background: rgba(255, 59, 59, 0.2);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 59, 59, 0.6);
+}
+
+.badge-chaos {
+  background: rgba(247, 201, 72, 0.2);
+  color: var(--accent-gold);
+  border: 1px solid rgba(247, 201, 72, 0.6);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+/* Title pulsing */
+@keyframes titlePulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 4px 4px 0 #0a1f4f, 0 0 20px rgba(247, 201, 72, 0.4);
+  }
+  100% {
+    transform: scale(1.03);
+    text-shadow: 6px 6px 0 #0a1f4f, 0 0 40px rgba(247, 201, 72, 0.9);
+  }
+}
+
+/* Slow float for title image */
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Ball shot trail (if you add a class) */
+@keyframes ballTrail {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+  }
+}
+
+/* Glove hit flash */
+@keyframes gloveHit {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.9));
+  }
+  50% {
+    transform: scale(1.1) translate(-50%, -50%);
+    filter: drop-shadow(0 0 20px rgba(59, 255, 123, 1));
+  }
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+    filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.9));
+  }
+}
+
+/* Screen shake for chaos mode */
+@keyframes screenShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4px, 2px); }
+  40% { transform: translate(3px, -3px); }
+  60% { transform: translate(-2px, 4px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Fade in */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Large screens */
+@media (min-width: 1200px) {
+  #titleScreen h1 {
+    font-size: 5rem;
+  }
+
+  #field {
+    height: 580px;
+  }
+
+  #ball {
+    width: 70px;
+    height: 70px;
+  }
+
+  #glove {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  #titleScreen h1 {
+    font-size: 3.5rem;
+  }
+
+  #titleImage {
+    width: 80%;
+  }
+
+  #hud {
+    padding: 10px 18px;
+  }
+
+  #field {
+    height: 420px;
+  }
+
+  #ball {
+    width: 50px;
+    height: 50px;
+  }
+
+  #glove {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  #titleScreen {
+    padding: 20px 10px;
+  }
+
+  #titleScreen h1 {
+    font-size: 2.6rem;
+  }
+
+  #titleImage {
+    width: 90%;
+  }
+
+  #hud {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 14px;
+  }
+
+  #field {
+    height: 360px;
+    border-radius: 12px;
+  }
+
+  #instruction {
+    font-size: 1rem;
+    margin-top: 12px;
+  }
+
+  #endScreen h2 {
+    font-size: 2.4rem;
+  }
+
+  #finalScore {
+    font-size: 1.4rem;
+  }
+}
+
+/* =========================================================
+   UTILITY CLASSES FOR JS (OPTIONAL)
+   ========================================================= */
+
+/* Add this class to #gameScreen when AI is in chaos mode */
+.chaos-mode {
+  animation: screenShake 0.4s linear;
+}
+
+/* Add this class to #glove on save */
+.glove-save {
+  animation: gloveHit 0.3s ease-out;
+}
+
+/* Add this class to #ball during bullet shots */
+.ball-bullet {
+  animation: ballTrail 0.3s linear infinite alternate;
+}
+
+/* Fade in screens */
+.screen-enter {
+  animation: fadeInUp 0.5s ease-out;
 }
