@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Goalie Reaction Simulator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="game.js"></script>
+  <meta charset="UTF-8">
+  <title>Goal Savior</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="start-screen">
-        <h1>Goalie Reaction Simulator</h1>
-        <button id="start-btn">Start</button>
+  <!-- TITLE SCREEN -->
+  <div id="titleScreen">
+    <h1>GOAL SAVIOR</h1>
+    <img id="titleImage" src="assets/images/goalsavior.png" alt="Goal Savior Title">
+    <button id="startBtn">Start Match</button>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="gameScreen" style="display:none;">
+    <div id="hud">
+      <span id="scoreDisplay">Score: 0</span>
+      <span id="missDisplay">Misses: 0</span>
     </div>
 
-    <div id="mode-screen" style="display:none;">
-        <h2>Select Mode</h2>
-        <button id="bot-mode">Play Against Bot</button>
-        <button id="matchmaking-mode">Matchmaking</button>
+    <!-- Stadium background, ball, glove -->
+    <div id="field">
+      <img id="ball" src="assets/images/ball.png" alt="Ball">
+      <img id="glove" src="assets/images/gkgloves.png" alt="Goalkeeper Glove">
     </div>
 
-    <div id="game-screen" style="display:none;">
-        <h2>Game</h2>
-        <div id="field">
-            <div class="zone" id="left">LEFT</div>
-            <div class="zone" id="center">CENTER</div>
-            <div class="zone" id="right">RIGHT</div>
-        </div>
-        <p id="status">Press SPACE to start</p>
-        <p>Score: <span id="score">0</span></p>
-    </div>
+    <p id="instruction">Move your glove with the mouse and save the shot!</p>
+  </div>
 
+  <!-- END SCREEN -->
+  <div id="endScreen" style="display:none;">
+    <h2>Full Time!</h2>
+    <p id="finalScore"></p>
+    <button id="restartBtn">Play Again</button>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" src="assets/music/bgmusic.mp3" loop></audio>
+  <audio id="saveSfx" src="assets/sfx/whatasave.mp3"></audio>
+  <audio id="goalSfx" src="assets/sfx/goalcelebration.mp3"></audio>
+
+  <script src="game.js"></script>
 </body>
 </html>

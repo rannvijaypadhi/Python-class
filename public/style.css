@@ -1,50 +1,123 @@
+/* GLOBAL */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: #0b3d91;
-    color: white;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Impact', 'Oswald', sans-serif;
+  background: linear-gradient(135deg, #0b2a6b, #1e3d8f);
+  color: #fff;
+  text-align: center;
 }
 
-#start-screen,
-#mode-screen,
-#game-screen {
-    margin-top: 80px;
+/* TITLE SCREEN */
+#titleScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
-    padding: 14px 28px;
-    font-size: 18px;
-    border: none;
-    background: white;
-    color: #0b3d91;
-    cursor: pointer;
-    border-radius: 6px;
+#titleScreen h1 {
+  font-size: 4rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 #0a1f4f;
+  margin-bottom: 20px;
 }
 
-button:hover {
-    background: #e0e0e0;
+#titleImage {
+  width: 60%;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+#startBtn, #restartBtn {
+  background-color: #ffffff;
+  color: #0b2a6b;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#startBtn:hover, #restartBtn:hover {
+  background-color: #1e3d8f;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* GAME SCREEN */
+#gameScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#hud {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  font-size: 1.2rem;
 }
 
 #field {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  background: url("assets/images/gamebg.png") center/cover no-repeat;
+  border: 4px solid #fff;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.zone {
-    width: 120px;
-    height: 160px;
-    margin: 10px;
-    border: 3px solid white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+#ball {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
 }
 
-.zone.active {
-    background: #f1c40f;
-    color: black;
+#glove {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#instruction {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+/* END SCREEN */
+#endScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#endScreen h2 {
+  font-size: 3rem;
+  text-shadow: 3px 3px 0 #0a1f4f;
+}
+
+#finalScore {
+  font-size: 1.6rem;
+  margin: 20px 0;
 }
